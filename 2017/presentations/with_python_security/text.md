@@ -58,7 +58,7 @@ It is a structured approach that enables you to identify, quantify, and address 
 
 #### 1. Identification of assets
 
-Let's conduct an example threat modeling from Batman's perspective and identify our assets, which are: the bat cave, our butler Alfred and infatuation??? in form of emails and texts.
+Let's conduct an example threat modeling from Batman's perspective and identify our assets, which are: the bat cave, our butler Alfred and information in form of emails and texts.
 
 #### 2. Identification and quantification of threats
 
@@ -93,7 +93,7 @@ There are few frameworks that we can work with, such as STRIDE
 and ASF (Application Security Frame), both of which should give us reliable information regarding:
 * auditing and logging
     * auditing is used to answer the question "Who did what?" and possibly why.
-    * aogging is more focused on what's happening.
+    * logging is more focused on what's happening.
 * authentication and authorization
     * authentication is the a process of ascertaining that somebody really is who he or she claims to be
     * authorization is a process to determine who is allowed to do what
@@ -113,13 +113,13 @@ and ASF (Application Security Frame), both of which should give us reliable info
 Now we just need to measure the severity of the threats we have.
 We can try approaching that by ourselves, determining which assets are the most important for us or, for example, use CVSS.
 CVSS, or Common Vulnerability Scoring System, is based on factors such as:
-* attack vector
-* attack complexity (hard to measure)
-* privileges
-* user interaction
-* scope
-* confidentiality
-* integrity
+* Attack vector
+* Attack complexity (hard to measure)
+* Privileges
+* User interaction
+* Scope
+* Confidentiality
+* Integrity
 * availability
 All of the above together can give a reference rating, but if one of the parameters is hard to define,
 like in the case of attack complexity, try both and either calculate an average or leave it as a range.
@@ -129,13 +129,13 @@ As mentioned before, having use case UMLs or even better abuse case UMLs may com
 #### 3. Addressing
 
 We can address issues in 4 ways, by:
-1. completely removing the threat
-2. reducing/mitigating the threat,
-3. acknowledging it and doing nothing
-4. pretending there is no issue
+1. Completely removing the threat
+2. Reducing/mitigating the threat
+3. Acknowledging it and doing nothing
+4. Pretending there is no issue
 
 Obviously, the best options is to remove the threat, but sometimes it's either impossible or the costs of removing it are too high. In such cases we can try to mitigate it.
-Taking the risk by leaving it as is or marking it as "address later", where it does not affect our ???
+Taking the risk by leaving it as is or marking it as "address later", where it does not affect our business nor customers,
 maybe fine in some cases, for instance when an attacker is able to traverse over a directory with long and random file names of non important pictures of
 other users' cats. So, there is a chance that someone will type some random gibberish and they will see the picture of a user's cat but they still won't
 know whose cat it is and we don’t really care if that happens.
@@ -155,7 +155,7 @@ OWASP offers a vast repository of cybersecurity knowledge, encompassing not only
 Every few years, OWASP publishes a list of most common attacks. The last one is from 2013 and a fresh one is coming up this year,
 but if you compare between the recent lists, the changes are minimal over time, which leads to a sad conclusion that many people still have not yet learned from other's mistakes.
 
-OWASP TOP 10:
+OWASP TOP 10 from 2013:
 1. A1 Injection
 2. A2 Broken Authentication and Session Management
 3. A3 Cross-Site Scripting (XSS)
@@ -166,16 +166,6 @@ OWASP TOP 10:
 8. A8 Cross-Site Request Forgery (CSRF)
 9. A9 Using Components with Known Vulnerabilities
 10. A10 Unvalidated Redirects and Forwards
-
-so Broken authentication and session management,
-cross site scripting…
-this one is interesting because it does not affect us directly but our users,
-cross site scripting allows an attacker to embed their script into our webpage, for example, in a comment, which will not
-affect our site directly, but, for example, cause our trusting users to download some malware… Security misconfiguration,
-missing ACLs, CSRF so who knows django… … … ?
-Ok most of you remember that when using a django template language you add CSRF tokens in forms, right?
-The reason for doing so, is to perevnt atackers from abusing your forms that easily.
-If you are not adding them you should…
 
 Try all of the OWASP TOP10 and more using one of the projects:
 * [BeeBox project](https://sourceforge.net/projects/bwapp/files/bee-box/)
@@ -341,12 +331,12 @@ At this point we have completed all points of the Decomposition phase of threat 
 
 So, for our Front end we can expect six of OWASP top 10,
 
-A2 Broken Authentication and Session Management
-A3 Cross-Site Scripting (XSS)
-A5 Security Misconfiguration
-A7 Missing Function Level Access Control
-A8 Cross-Site Request Forgery (CSRF)
-A10 Unvalidated Redirects and Forwards
+1. A2 Broken Authentication and Session Management
+2. A3 Cross-Site Scripting (XSS)
+3. A5 Security Misconfiguration
+4. A7 Missing Function Level Access Control
+5. A8 Cross-Site Request Forgery (CSRF)
+6. A10 Unvalidated Redirects and Forwards
 
 We are using a well know framework, which is really good, unless we or our developers do something stupid, because AngularJS mitigates or even handles all of those issues.
 
@@ -364,9 +354,9 @@ OWASP TOP 10:
 
 From Threat Modeling of a python app, we can see that we can have even more vulnerabilities than on the frontend side, but most of them are mitigated out
 of the box, as long as we follow three important rules during development:
-1. Use common sense,
-2. Do not use uncommon external libraries without proper check up, for example if they are not sending the data to NSA/KGB/ETC,
-3. Do not use outdated libraries as it may open code to vulnerabilities.
+1. Use common sense
+2. Do not use uncommon external libraries without proper check up, for example if they are not sending the data to NSA/KGB/ETC
+3. Do not use outdated libraries as it may open code to vulnerabilities
 
 
 #### Addressing issues
@@ -416,12 +406,13 @@ Source Code Analysis (Reading through the abstract syntax tree and looking for p
 
 Automatic Scanning tools:
 * ZAP (Zed Attack Proxy) – Free, Open Source, Jenkins ready
-Zap is an open source alternative to burp, developed under the OWASP project and it already has a dedicated Jenkins plugin.
+Zap is an open source alternative to burp, developed under the OWASP project and it already has a dedicated Jenkins plugin
 * Burp – Free/Paid, Jenkins ready in ~2017
 Burp can Scan for vulnerabilities, intercept browser traffic and automate custom attacks, it does not have a Jenkins plugin yet, but it was announced that this year something should be ready for continuous development.
 Both of them can also be used manually, so you can define you own attack patterns and payloads.
-* Metasploit – Free, OpenSource, Jenkins ready
-* SQLMap - Free, OpenSource
+* Metasploit – Free, OpenSource, Jenkins ready, scans on system levels
+* SQLMap - Free, OpenSource, scans application only for SQL injections
+
 * scapy - Free, OpenSource, Python, if want to test a custom protocol, you will probably need to use scapy, which is a python library for preparing dedicated TCP, ICMP packages and UDP Datagrams.
 
 Commercial solutions and managed services:
@@ -450,20 +441,20 @@ basically means a criminal and will make them really sad and you do not want tha
 There are tree major approaches when pen testing white, grey and black box.
 
 White box means full transparency and full access for a pentester to our production systems, especially:
-* a pentester has full access to the application and systems they are testing,
-* the test covers the widest range of attack vectors,
-* a pentester has access to our source code and documentation.
+* A pentester has full access to the application and systems they are testing
+* The test covers the widest range of attack vectors
+* A pentester has access to our source code and documentation
 
-Grey box narrows the access, but still requires source code and sometimes developer instance??? before starting the main pentest,
+Grey box narrows the access, but still requires source code and sometimes a developer instance before starting the main pentest,
 the pentesting becomes targeted and works within boundaries:
-* a pentester does not have access to the system,
-* a pentester has different types of accounts such as user and/or moderator, but not admin-level application access,
-* a pentester has access to our source code and documentation.
+* A pentester does not have access to the system
+* A pentester has different types of accounts such as user and/or moderator, but not admin-level application access
+* A pentester has access to our source code and documentation
 
 Black box, as the name suggests, limits access, so the pentester's perspective is similar to a real attacker:
-* a pentester does not have knowledge about the system or only knows its basics,
-* a pentester has no access to source code, but obtaining the source code may be one of the steps when executing an attack or be one if its goals,
-* a pentester has no initial access to the app above end-user level.
+* A pentester does not have knowledge about the system or only knows its basics
+* A pentester has no access to source code, but obtaining the source code may be one of the steps when executing an attack or be one if its goals
+* A pentester has no initial access to the app above end-user level
 
 
 #### CISO
@@ -477,16 +468,16 @@ Chief Information Security Officer is a person responsible for
 * Information risk management
 * Security architecture and development, so process and tools
 * IT Security
-* Security awareness in the company.
-* Managing pentests and red teamings.
+* Security awareness in the company
+* Managing pentests and red teamings
 
 #### Red Teaming
 
 A red teaming drill is usually a multi-level attack on a company that only CEO, CISO or CTO are aware of. A Red Teaming Exercise may consist of:
-* Physical security testing like breaking into the office, server rooms, conference rooms, planting bugs or lock picking.
-* Network and IT security testing done by, for example, planting raspberryPI on the net, routing data through a sniffer or leaving behind some rubberducky.
-* Phishing and social engineering.
-* Software pentesting.
+* Physical security testing like breaking into the office, server rooms, conference rooms, planting bugs or lock picking
+* Network and IT security testing done by, for example, planting raspberryPI on the net, routing data through a sniffer or leaving behind some rubberducky
+* Phishing and social engineering
+* Software pentesting
 If the red timing finishes undetected, it means the company under test has huge security problems as the attacker during
 the drill, after achieving all goals, starts being “noisy” till a point someone should notice…
 
